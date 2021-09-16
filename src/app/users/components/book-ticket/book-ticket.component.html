@@ -1,0 +1,100 @@
+<div class="main-div">
+    <h3>Add passengers and Book Ticket</h3>
+    <form [formGroup]="passengersForm">
+       
+          <label>
+          Name
+          </label>
+          <input type ="text" formControlName = "name" class="form-control" placeholder="Name"/>
+          <label>
+          Age
+          </label>
+          <input type ="number" formControlName = "age" class="form-control" placeholder="Age"/>
+          <label>
+          Gender
+          </label>
+          <!--<input type ="text" formControlName = "gender" class="form-control" placeholder="Gender"/>-->
+          <select formControlName = "gender" name="gender" id="gender">
+             <option value="">SELECT</option>
+             <option value="Male">Male</option>
+             <option value="Female">Female</option>
+             <option value="Others">Others</option>
+          </select>
+          <button type ="submit" class="btn btn-primary" (click)="addPassengers()" id = "submit"> Add </button>
+          <button type ="reset" class="btn btn-secondary" (click)="resetPassengers()" id="reset"> Reset </button>
+       
+ </form>
+
+
+    <table class="tbl1" *ngIf="passengers.length>0">
+       <tr>
+          <th>S.no</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+       </tr>
+       <tr *ngFor="let passenger of passengers;let i = index">
+          <td>{{i+1}}</td>
+          <td>{{passenger.name}}</td>
+          <td>{{passenger.age}}</td>
+          <td>{{passenger.gender}}</td>
+          <td><button class="btn-remove" (click)="removePassenger()">Delete</button></td>
+       </tr>
+    </table>
+       <h4>Enter a coupon code</h4>
+       <input type = "text" [(ngModel)]="couponCode" ><br><br>
+       <button  class="btn btn-primary" (click)="applyCoupon()"> Apply Coupon </button>
+       <button  class="btn btn-primary" (click)="bookticket()" > Book ticket </button>
+    
+ 
+<div class="ticket-det" *ngIf="ticket">
+ <table >
+    <caption>Ticket</caption>
+    <tbody>
+        <tr>
+            <th> User id :</th>
+            <td>{{ticket.userId}}</td>
+        </tr>
+        <tr>
+            <th>flight name :</th>
+            <td>{{ticket.flightName}}</td>
+        </tr>
+       
+        <tr>
+            <th> Date :</th>
+            <td>{{ticket.flightdate}}</td>
+        </tr>
+        <tr>
+            <th>Time :</th>
+            <td>{{ticket.flightTime}}</td>
+        </tr>
+        <tr>
+            <th>PNR :</th>
+            <td>{{ticket.pnr}}</td>
+        </tr>
+        <tr>
+            <th>Ticket price :</th>
+            <td>{{ticket.price}}</td>
+        </tr>
+        <tr>
+            <th>Status :</th>
+            <td>{{ticket.status}}</td>
+        </tr>
+        <tr>
+            <th>Passengers :</th>
+            
+            <th>Passenger name</th>
+            <th>Age</th>
+            <th>Gender</th>
+         </tr>
+         <tr *ngFor="let passenger of ticket.passengers ;let i = index">
+             <td></td>
+         <!--<td>{{i+1}}</td>-->
+          <td>{{passenger.name}}</td>
+          <td>{{passenger.age}}</td>
+          <td>{{passenger.gender}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>

@@ -1,0 +1,16 @@
+<div class="main-div">
+    <div class="div1">
+    <label>Enter email id to get booking history</label>
+    <input type="text" [(ngModel)]="emailId" placeholder="Email-id"/>
+
+    <button (click)="getBookingHistoryWithEmail()" routerLink="/user/email-ticket-history">Get Booking History</button>
+    <br>
+    </div>
+
+    <div class="div2">
+    <label>Enter PNR to get booking history</label>
+    <input type = "text" [(ngModel)] = "pnr" placeholder="PNR"/>
+    <button (click)="getTicketDetailsWithPNR()" routerLink="/user/pnr-ticket-details">Get ticket details</button>
+    </div>
+
+</div>

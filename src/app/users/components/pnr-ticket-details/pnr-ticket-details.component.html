@@ -1,0 +1,56 @@
+
+<div class="main-div">
+<div class="ticket-div" *ngIf="ticketDetails" >
+<table >
+    <caption>Ticket</caption>
+    <tbody>
+        <tr>
+            <th> User id :</th>
+            <td>{{ticketDetails.userId}}</td>
+        </tr>
+        <tr>
+            <th>flight name :</th>
+            <td>{{ticketDetails.flightName}}</td>
+        </tr>
+       
+        <tr>
+            <th> Date :</th>
+            <td>{{ticketDetails.flightdate}}</td>
+        </tr>
+        <tr>
+            <th>Time :</th>
+            <td>{{ticketDetails.flightTime}}</td>
+        </tr>
+        <tr>
+            <th>PNR :</th>
+            <td>{{ticketDetails.pnr}}</td>
+        </tr>
+        <tr>
+            <th>Ticket price :</th>
+            <td>{{ticketDetails.price}}</td>
+        </tr>
+        <tr>
+            <th>Status :</th>
+            <td>{{ticketDetails.status}}</td>
+        </tr>
+        <tr>
+            <th>Passengers :</th>
+            
+            <th>Passenger name</th>
+            <th>Age</th>
+            <th>Gender</th>
+         </tr>
+         <tr *ngFor="let ticketpassenger of ticketPassengers ;let i = index">
+             <td></td>
+         <!--<td>{{i+1}}</td>-->
+          <td>{{ticketpassenger.name}}</td>
+          <td>{{ticketpassenger.age}}</td>
+          <td>{{ticketpassenger.gender}}</td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn-remove" *ngIf="ticketDetails.flightdate" (click) = "cancelTicket()">Cancel</button>
+</div>
+
+</div>
+

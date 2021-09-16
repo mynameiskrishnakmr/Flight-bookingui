@@ -1,0 +1,38 @@
+
+<div class="main-div" *ngIf = "ticketHistory.length>0">
+    <div class="history-div">
+    <h4> Booking History</h4>
+
+    
+    <div class="tbl1">
+        <div  >
+            
+                <table>
+                    
+                      <th> UserId</th>   
+                      <th> PNR</th>
+                      <th> Airline name</th>  
+                      <th> Flight Id</th>  
+                      <th> Flight From</th>  
+                      <th> Flight To</th>  
+                      <th> Flight Date</th>  
+                      <th> No Of Passengers</th>                 
+                    
+                    <tr *ngFor = "let ticket of ticketHistory" class="div2">
+                        <td>{{ticket.userId}}</td>
+                        <td>{{ticket.pnr}}</td>
+                        <td>{{ticket.airlineName}}</td>
+                        <td>{{ticket.flightId}}</td>
+                        <td>{{ticket.flightFrom}}</td>
+                        <td>{{ticket.flightTo}}</td>
+                        <td>{{ticket.flightDate}}</td>
+                        <td>{{ticket.noOfPassengers}}</td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+
+
+</div>
+
+</div>

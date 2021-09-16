@@ -1,0 +1,40 @@
+
+
+.main-div{
+    background-color: lightblue;
+    width: 100%;
+}
+
+.history-div{
+        margin: auto;
+    width: 60%;
+    
+    padding: 10px;
+   background-color: lightblue;
+        
+    
+    }
+
+h3{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightblue;
+}
+
+.tbl1{
+    align-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+table{
+   
+    text-align:center;
+}
+
+
+  td,th{
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
