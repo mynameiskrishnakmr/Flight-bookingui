@@ -1,0 +1,50 @@
+
+<div class="maindiv">
+    <h3> Search for flights</h3>
+
+    
+        <label for="from">From:</label>
+         <input type = "text" [(ngModel)] ="flightFrom" placeholder="Bengaluru"/>
+
+         <label for="to">To:</label>
+        <input type = "text" [(ngModel)] = "flightTo"  placeholder = "Newyork"/>
+
+        <label for="date of journey">Date of Journey :</label>
+         <input type = "date" [min]="minDate" [(ngModel)] = "dateOfJourney" placeholder = "Select a date"/>
+         
+        <p><button (click) = "searchFlights()">Search</button></p>
+    
+    <div class="table-div">
+    <div *ngIf = "flights.length>0" >
+        
+            <table>
+                
+                  <th> Flight Id</th>  
+                  <th> Airline name</th>  
+                  <th> Flight name</th>  
+                  <th> Date</th>  
+                  <th> Time</th>  
+                  <th> From</th>  
+                  <th> To</th>  
+                  <th> Available seats</th>  
+                  <th> price</th>                    
+                
+                <tr *ngFor = "let flight of flights" class="div2">
+                    <td>{{flight.flightId}}</td>
+                    <td>{{flight.airlineName}}</td>
+                    <td>{{flight.flightName}}</td>
+                    <td>{{flight.date}}</td>
+                    <td>{{flight.dateTime}}</td>
+                    <td>{{flight.from}}</td>
+                    <td>{{flight.to}}</td>
+                    <td>{{flight.seats}}</td>
+                    <td>{{flight.price}}</td>
+                    <td><button (click)="setFlightId(flight.flightId)" routerLink="/user/book-ticket"> Book flight</button></td>
+                </tr>
+            </table>
+    </div>
+</div>
+</div>
+
+
+

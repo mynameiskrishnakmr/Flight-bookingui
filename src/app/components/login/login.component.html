@@ -1,0 +1,26 @@
+<div class="login">
+  <div class="login-triangle"></div>
+  
+  <h2 class="login-header">Log in</h2>
+  <form class="login-container" [formGroup]="loginForm" (submit)="getLogin()">
+    
+    <p [ngClass]="{ 'has-error': isSubmitted && formControls.username.errors }">
+      <input type="email" formControlName="username" placeholder="Username">
+    </p>
+
+    <div *ngIf="isSubmitted && formControls.username.errors" class="help-block">
+      <div *ngIf="formControls.username.errors">username is required</div>
+    </div>
+
+    <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+      <input type="password" formControlName="password" placeholder="Password">
+    </p>
+
+    <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+      <div *ngIf="formControls.password.errors">password is required</div>
+    </div>
+    <p><input type="submit" ></p>
+
+</form>
+
+</div>
