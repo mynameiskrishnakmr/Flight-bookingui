@@ -7,23 +7,19 @@ import { Passenger } from '../models/passenger.mode';
 })
 export class BookService {
 
-  userId : string ="111"; //temp value, to be fetched from local storage
+  //userId : string ="111"; //temp value, to be fetched from local storage
   url : string= "http://localhost:9091/api/v1.0/booking/users";
   stringJson: string="";
   constructor( private http:HttpClient) { }
 
 
-  applycoupon(flightId: string, passengers: Passenger[], couponCode: string) {
-    this.stringJson = JSON.stringify(passengers);
-    console.log(`book ticket service ${this.stringJson} dsdsd`);
-
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json' });
-    let optionsGet = { headers: headers };
-     return this.http.get(this.url+"/"+this.userId+"/flight/"+flightId+"?discountCoupon="+couponCode,optionsGet);
+  applycoupon(flightId: string,userId:string, noOfpassengers:number, couponCode: string, ) {
+    
+    console.log('book ticket service- apply coupon');
+     return this.http.get(this.url+"/"+userId+"/flight/"+flightId+"?discountCoupon="+couponCode+"&noOfPassengers="+noOfpassengers);
   }
 
-  bookticket(flightId: string, passengers:Passenger[], couponCode:string) {
+  bookticket(flightId: string, passengers:Passenger[], couponCode:string, userId:string) {
     
     this.stringJson = JSON.stringify(passengers);
     console.log(`book ticket service ${this.stringJson} dsdsd`);
@@ -31,7 +27,7 @@ export class BookService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json' });
     let options = { headers: headers };
-    return this.http.post(this.url+"/"+this.userId+"/flight/"+flightId+"?discountCoupon="+couponCode,this.stringJson,options);
+    return this.http.post(this.url+"/"+userId+"/flight/"+flightId+"?discountCoupon="+couponCode,this.stringJson,options);
   }
 
 }

@@ -17,8 +17,12 @@ h2{
     text-align: end;
     margin-bottom: 0%;
     font-family: Arial, Helvetica, sans-serif;
-    color:black;
+    color:whitesmoke;
     font-weight: bold ;
     padding-right: 1em;
 
+}
+
+a{
+    color:whitesmoke;
 }

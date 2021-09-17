@@ -19,7 +19,7 @@ td,th{
     border: 1px solid #ddd;
     padding: 8px;
   }
-  .btn-remove{
+  .btn-remove-show{
     background-color: red;
     border: none;
     color: white;
@@ -32,3 +32,38 @@ td,th{
     cursor: pointer;
     font-weight: bold;
   }
+
+  .btn-remove-hide{
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .error{
+      font-style: normal;
+      color:red;
+  }
+
+  .hide{
+
+    display: none;
+}
+
+input[type=text],[type=date],[type=number] ,select{
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+

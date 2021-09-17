@@ -49,7 +49,13 @@
         </tr>
     </tbody>
 </table>
-<button class="btn-remove" *ngIf="ticketDetails.flightdate" (click) = "cancelTicket()">Cancel</button>
+
+    <div *ngIf="ticketDetails.status=='Booked'">
+        <h4>Enter Email-id to cancel the ticket</h4>
+        <input type = "text" [(ngModel)]="userId" required>
+        <button class="btn-remove-show " (click) = "cancelTicket()" >cancel</button>
+        <div *ngIf="error" class="error">Enter a valid email id</div>
+    </div>
 </div>
 
 </div>

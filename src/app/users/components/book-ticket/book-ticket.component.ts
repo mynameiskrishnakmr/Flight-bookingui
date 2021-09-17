@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Passenger } from 'src/app/models/passenger.mode';
 import { BookService } from 'src/app/service/book.service';
 import { FlightService } from 'src/app/service/flight.service';
@@ -15,16 +15,28 @@ export class BookTicketComponent implements OnInit {
   }
  //public flightId:string="12"; //to be fetched from the search flight screen
   passengersForm : FormGroup;
+  bookingForm : FormGroup;
+  
   public passengers :Passenger[]=[];
   public couponCode : string="";
   public ticket :any;
   public ticketPassengers :any[]=[];
+  public userId:string="";
+  public couponReponse:any;
+  
 
   constructor(private flightService: FlightService,private fb:FormBuilder, private bookService:BookService){
     this.passengersForm= this.fb.group({
       name:['',Validators.required],
       age:['',Validators.required],
       gender:['',Validators.required]
+    });
+
+    this.bookingForm=new FormGroup({
+      couponcode:new FormControl(""),
+      userId: new FormControl("",
+      [Validators.required,Validators.pattern("[A-Za-z0-9._]+@[a-z0-9.]+\\.[a-z]{2,3}")]
+      )
     });
   }
   
@@ -40,22 +52,26 @@ export class BookTicketComponent implements OnInit {
     this.passengersForm.reset();
   }
 
+  
+
   removePassenger(){
 
   }
 
   applyCoupon(){
     console.log("inside apply coupon");
-    this.bookService.applycoupon(this.flightService.getflightId(), this.passengers, this.couponCode).subscribe((response:any)=>{
+    this.userId=this.bookingForm.value.userId;
+    let noOfPassengers = this.passengers.length
+    this.bookService.applycoupon(this.flightService.getflightId(),this.userId,  noOfPassengers, this.couponCode, ).subscribe((response:any)=>{
       console.log(response);
+      this.couponReponse=response;
     });
 
   }
 
   bookticket(){
-    console.log("inside book ticket");
-    console.log(this.passengers);
-    this.bookService.bookticket(this.flightService.getflightId(), this.passengers, this.couponCode).subscribe((response:any)=>{
+    this.userId=this.bookingForm.value.userId;
+    this.bookService.bookticket(this.flightService.getflightId(), this.passengers, this.couponCode, this.userId).subscribe((response:any)=>{
       console.log(response);
       this.ticket=response;
      this.ticketPassengers= this.ticket.passengers;

@@ -20,7 +20,7 @@
              <option value="Female">Female</option>
              <option value="Others">Others</option>
           </select>
-          <button type ="submit" class="btn btn-primary" (click)="addPassengers()" id = "submit"> Add </button>
+          <button type ="submit" class="btn btn-primary" [disabled]= "!passengersForm.valid" (click)="addPassengers()" id = "submit"> Add </button>
           <button type ="reset" class="btn btn-secondary" (click)="resetPassengers()" id="reset"> Reset </button>
        
  </form>
@@ -41,11 +41,32 @@
           <td><button class="btn-remove" (click)="removePassenger()">Delete</button></td>
        </tr>
     </table>
-       <h4>Enter a coupon code</h4>
-       <input type = "text" [(ngModel)]="couponCode" ><br><br>
+
+    <form [formGroup]="bookingForm">
+       <h4>Enter a coupon code </h4>
+       <input type = "text"  formControlName = "couponcode" >
        <button  class="btn btn-primary" (click)="applyCoupon()"> Apply Coupon </button>
-       <button  class="btn btn-primary" (click)="bookticket()" > Book ticket </button>
-    
+       <!--<div class="alert alert-success">
+        <strong>Success!</strong> This alert box could indicate a successful or positive action.
+      </div>-->
+
+       <h4>Email-id </h4>
+       <input type = "text" formControlName = "userId" required>
+       <!--<span *ngIf="bookingForm.controls.userId.invalid && ">please enter a valid emailid</span>-->
+       <div *ngIf="(!bookingForm.valid) && (bookingForm.controls['userId'].dirty)">
+            <span *ngIf="bookingForm.controls['userId'].hasError('required')">
+
+             Please Enter email id
+
+            </span>
+            
+      </div>
+
+       <br><br>
+
+       
+       <button type ="submit" class="btn btn-primary" (click)="bookticket()"> Book ticket </button>
+    </form>
  
 <div class="ticket-det" *ngIf="ticket">
  <table >

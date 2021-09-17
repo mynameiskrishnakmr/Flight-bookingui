@@ -8,7 +8,7 @@ export class TicketService {
   
   email:string ="";
   pnr:string="";
-  userId:string="111"; //to be obtained from user
+  
 
   url: string = "http://localhost:9091/api/v1.0/booking";
   
@@ -24,9 +24,9 @@ export class TicketService {
     return this.http.get(this.url+"/ticket/"+this.pnr);
   }
 
-  cancelTicket(pnr : string){
-    console.log("userid "+this.userId+"  pnr : "+pnr);
-    return this.http.delete(this.url+"/users/"+this.userId+"/cancel/"+pnr);
+  cancelTicket(pnr : string , userId:string){
+    console.log("userid "+userId+"  pnr : "+pnr);
+    return this.http.delete(this.url+"/users/"+userId+"/cancel/"+pnr);
   }
 }
 

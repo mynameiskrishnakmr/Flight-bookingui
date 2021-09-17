@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
 
     console.log(this.loginForm);
     this.isSubmitted = true;
-    //localStorage.setItem("user",)
 
   }
 
