@@ -1,0 +1,26 @@
+<p>manage-discounts works!</p>
+
+    <input type="text" placeholder="Coupon code" [(ngModel)]="couponcode"/>
+    <input type="date" placeholder="Expiry Date" [(ngModel)]="expiryDate"/>
+    <input type="status" placeholder="Status" [(ngModel)]="status"/>
+    <input type="text" placeholder="discount price" [(ngModel)]="discountPrice"/>
+    <button (click)="addDiscountCoupon()">Add Coupon</button>
+
+    <table *ngIf="coupons.length>0">
+        <tr>
+           <th>S.no</th>
+           <th>Coupon code</th>
+           <th>Expiry date</th>
+           <th>Status</th>
+           <th>Discount price</th>
+        </tr>
+        <tr *ngFor="let coupon of coupons; let i = index">
+           <td>{{i+1}}</td>
+           <td>{{coupon.couponcode}}</td>
+           <td>{{coupon.expiryDate}}</td>
+           <td>{{coupon.status}}</td>
+           <td>{{coupon.discountPrice}}</td>
+           <td ><button (click)="modifyCoupon(coupon.couponCode)">Modify</button></td>
+           
+        </tr>
+     </table>

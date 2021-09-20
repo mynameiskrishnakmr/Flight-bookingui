@@ -1,1 +1,56 @@
-<p>sign-up works!</p>
+<div class="login">
+    <div class="login-triangle"></div>
+    
+    <h2 class="login-header">Sign-up</h2>
+    <form class="login-container" [formGroup]="signupForm" (submit)="signup()">
+      <p [ngClass]="{ 'has-error': isSubmitted && formControls.firstname.errors }">
+        <input type="text" formControlName="firstname" placeholder="Firstname">
+      </p>
+      
+      <div *ngIf="isSubmitted && formControls.firstname.errors" class="help-block">
+        <div *ngIf="formControls.firstname.errors">First name is required</div>
+      </div>
+
+      <p [ngClass]="{ 'has-error': isSubmitted && formControls.lastname.errors }">
+        <input type="text" formControlName="lastname" placeholder="Lastname">
+      </p>
+      
+      <div *ngIf="isSubmitted && formControls.lastname.errors" class="help-block">
+        <div *ngIf="formControls.lastname.errors">Last name is required</div>
+      </div>
+
+        
+      <p [ngClass]="{ 'has-error': isSubmitted && formControls.username.errors }">
+        <input type="email" formControlName="username" placeholder="Email-id">
+      </p>
+  
+      <div *ngIf="isSubmitted && formControls.username.errors" class="help-block">
+        <div *ngIf="formControls.username.errors">username is required</div>
+      </div>
+  
+      <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+        <input type="password" formControlName="password" placeholder="Password">
+      </p>
+  
+      <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+        <div *ngIf="formControls.password.errors">password is required</div>
+      </div>
+
+      <p [ngClass]="{ 'has-error': isSubmitted && formControls.gender.errors }">
+        <select formControlName = "gender" placeholder="Gender">
+          <option value="">SELECT</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Others">Others</option>
+       </select>
+      </p>
+  
+      <div *ngIf="isSubmitted && formControls.gender.errors" class="help-block">
+        <div *ngIf="formControls.gender.errors">Please select the gender</div>
+      </div> 
+
+      <p><input type="submit" ></p>
+  
+  </form>
+  
+  </div>
