@@ -1,22 +1,21 @@
-<p>manage-airlines works!</p>
 
 <input type="text" placeholder="AirlineName" [(ngModel)]="airlineName"/>
 <input type="text" placeholder="emailId" [(ngModel)]="airlineEmail"/>
 <Button (click)="addAirline()">Add</Button>
 
-<table *ngIf="airlineResponse.length>0">
+<table *ngIf="airlines.length>0">
     <tr>
        <th>S.no</th>
        <th>Airline id</th>
        <th>Airline name</th>
        <th>Airline email id</th>
     </tr>
-    <tr *ngFor="let airline of airlineResponse; let i = index">
+    <tr *ngFor="let airline of airlines; let i = index">
        <td>{{i+1}}</td>
        <td>{{airline.airlineId}}</td>
        <td>{{airline.airlineName}}</td>
        <td>{{airline.airlineEmail}}</td>
-       <td *ngIf="airline.status!='AVAILABLE'"><button (click)="blockAirline(airline.airlineId)">UnBlock</button></td>
+       <td *ngIf="airline.status=='BLOCKED'"><button (click)="blockAirline(airline.airlineId)">UnBlock</button></td>
        <td *ngIf="airline.status =='AVAILABLE'"><button (click)="blockAirline(airline.airlineId)">Block</button></td>
     </tr>
  </table>

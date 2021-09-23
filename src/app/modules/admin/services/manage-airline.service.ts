@@ -17,11 +17,11 @@ export class ManageAirlineService {
 
       let jsonString=JSON.stringify(airline);
       let headers = new HttpHeaders({
-      'Content-Type': 'application/json' });
+        'Content-Type': 'application/json' });
       let options = { headers: headers };
       console.log(jsonString);
-      return this.http.post(this.url, jsonString);
-}
+      return this.http.post(this.url, jsonString,options);
+  }
 
   getAllAirline(){
     return this.http.get(this.url);
@@ -30,7 +30,7 @@ export class ManageAirlineService {
 
   blockAirline(airlineId: string) {
 
-    return this.http.put(this.url+"/"+airlineId,null);
+    return this.http.put(this.url+"/"+airlineId,{});
 
   
   }

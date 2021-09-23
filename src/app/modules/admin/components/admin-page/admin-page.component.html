@@ -1,0 +1,18 @@
+<div class="header">
+    <h2>Flight Admin</h2>
+        <div class = "links">
+            
+
+            <a *ngIf="!authService.isLoggedIn" routerLink="login">Login |</a> 
+            <a *ngIf="!authService.isLoggedIn" routerLink="sign-up">sign-up |</a> 
+        
+            <a *ngIf="authService.isLoggedIn" routerLink="manage-airlines" >Manage airlines </a>
+            <a *ngIf="authService.isLoggedIn"routerLink="manage-flights" >Manage Flights |</a>
+            <a *ngIf="authService.isLoggedIn" routerLink="manage-discounts">Manage Discounts |</a>
+            <a *ngIf="authService.isLoggedIn" routerLink="login" (click)="getLogout()" >logout</a>
+            
+            
+        </div>
+</div>
+
+<router-outlet></router-outlet>

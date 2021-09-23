@@ -1,1 +1,42 @@
-<p>manage-flights works!</p>
+
+    <input type="text" placeholder="Flight name" [(ngModel)]="flight.flightName"/>
+
+    <input type="text" placeholder="Airline Id" [(ngModel)]="airlineId"/>
+    <input type="text" placeholder="Source" [(ngModel)] ="flight.from"/>
+    <input type="text" placeholder="Destination" [(ngModel)]="flight.to"/>
+    <input type="date" placeholder="Date" [(ngModel)]="flight.date"/>
+    <input type="string" placeholder="Time" [(ngModel)]="flight.dateTime"/>
+    <input type="number" placeholder="Ticket price" [(ngModel)]="flight.price"/>
+    <input type="number" placeholder="No of seats" [(ngModel)]="flight.seats"/>
+    <button (click)="addFlight()"> Add flight</button>
+
+    <table *ngIf="flights.length>0">
+        <tr>
+           <th>S.no</th>
+           <th>Flight Id</th>
+           <th>Flight Name</th>
+           <th>Airline Name</th>
+           <th>Source</th>
+           <th>Destination price</th>
+           <th>Date</th>
+           <th>Time</th>
+           <th>Ticket price</th>
+           <th>Number of Seats</th>
+        </tr>
+        <tr *ngFor="let flight of flights; let i = index">
+           <td>{{i+1}}</td>
+           <td>{{flight.flightId}}</td>
+           <td>{{flight.flightName}}</td>
+           <td>{{flight.airline.airlineName}}</td>
+           <td>{{flight.from}}</td>
+           <td>{{flight.to}}</td>
+           <td>{{flight.dateTime}}</td>
+           <td>{{flight.date}}</td>
+           <td>{{flight.price}}</td>
+           <td>{{flight.seats}}</td>
+           <td ><button (click)="modifyFlight(flight,flight.airline.airlineId)">Modify</button></td>
+           <td ><button (click)="deleteFlight(flight.airline.airlineId, flight.flightId)">Delete</button></td>
+        </tr>
+     </table>
+    
+    

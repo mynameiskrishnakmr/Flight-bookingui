@@ -1,6 +1,9 @@
 export class Couponcode {
 
-    constructor(public airlineId:string,public airlineName: string, public airlineEmail:string){
+    constructor(public couponCode:string
+        ,public expiryDate: Date
+        , public status:string
+        , public discountPrice:string){
 
     }
 }

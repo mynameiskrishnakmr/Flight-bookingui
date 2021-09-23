@@ -4,19 +4,26 @@ import { User } from '../models/user';
 import { Router } from '@angular/router';
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
+
+
     url:string="http://localhost:9091/authenticate/authenticate";
     stringJson: string="";
+    isLoggedIn:boolean=false;
+
+
     constructor(private http: HttpClient, private router:Router) {}
 
+
+    
     getLogin(user : User){
 
-      this.stringJson = JSON.stringify(user);
-      console.log( "string json "+this.stringJson);
-      let headers = new HttpHeaders({
-        'Content-Type': 'application/json' 
-      });
-      let options = { headers: headers };
-     return  this.http.post(this.url, this.stringJson,options);
+        this.stringJson = JSON.stringify(user);
+        console.log( "string json "+this.stringJson);
+        let headers = new HttpHeaders({
+          'Content-Type': 'application/json' 
+        });
+          let options = { headers: headers };
+          return  this.http.post(this.url, this.stringJson,options);
      
     }
 
@@ -33,7 +40,8 @@ export class AuthenticationService {
     getLogout(){
 
       localStorage.removeItem('token');
-      this.router.navigate(["/login"]);
+      this.isLoggedIn=false;
+      this.router.navigate(["/admin/login"]);
 
     }
 
