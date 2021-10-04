@@ -17,13 +17,15 @@ import { ManageFlightsComponent } from './modules/admin/components/manage-flight
 import { AdminPageComponent } from './modules/admin/components/admin-page/admin-page.component';
 import { LoginComponent } from './modules/admin/components/login/login.component';
 import { SignUpComponent } from './modules/admin/components/sign-up/sign-up.component';
+import { DiscountComponent } from './modules/admin/components/discount/discount.component';
+import { FlightComponent } from './modules/admin/components/flight/flight.component';
 export const routes: Route[] = [
  // {path: "login", component: LoginComponent},
  // {path: "sign-up", component: SignUpComponent},
   {path: "search-flights", component: SearchflightsComponent},
   {path: "ticket", component: TicketDetailsComponent,},
   {path: "user/ticket-details", component: TicketDetailsComponent}, 
-  {path: "user/book-ticket", component: BookTicketComponent,  canActivate:[AuthGuard]},
+  {path: "user/book-ticket", component: BookTicketComponent},
   {path: "user/email-ticket-history", component:EmailTicketHistoryComponent },
   {path: "user/pnr-ticket-details", component: PnrTicketDetailsComponent},
  // {path: "admin/manage-airlines", component: ManageAirlinesComponent},
@@ -38,6 +40,8 @@ export const routes: Route[] = [
               {path: "manage-airlines", component: ManageAirlinesComponent, canActivate:[AuthGuard]}, 
               {path: "manage-flights", component: ManageFlightsComponent, canActivate:[AuthGuard]},
               {path: "manage-discounts", component:ManageDiscountsComponent , canActivate:[AuthGuard]},
+              {path: "discount-modify", component:DiscountComponent,  canActivate:[AuthGuard] },
+              {path: "flight-modify", component:FlightComponent,  canActivate:[AuthGuard] },
               {path: "", redirectTo: "login",pathMatch:"full"},
               {path: "**", redirectTo: "manage-airlines"}
             ],

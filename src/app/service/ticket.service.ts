@@ -8,9 +8,10 @@ export class TicketService {
   
   email:string ="";
   pnr:string="";
+  message:string="";
   
 
-  url: string = "http://localhost:9091/api/v1.0/booking";
+  url: string = "http://3.143.221.2:9091/api/v1.0/booking";
   
 
   constructor(private http:HttpClient) { }

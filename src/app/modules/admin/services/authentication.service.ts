@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
 
 
-    url:string="http://localhost:9091/authenticate/authenticate";
+    url:string="http://3.143.221.2:9091/api/v1.0/admin/authenticate";
     stringJson: string="";
     isLoggedIn:boolean=false;
 

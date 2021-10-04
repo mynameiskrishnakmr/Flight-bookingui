@@ -1,10 +1,17 @@
+    
+ <div class="main-div">
+   <h3>Manage discounts</h3>   
     <input type="text" placeholder="Coupon code" [(ngModel)]="newCoupon.couponCode"/>
     <input type="date" placeholder="Expiry Date" [(ngModel)]="newCoupon.expiryDate"/>
-    <input type="status" placeholder="Status" [(ngModel)]="newCoupon.status"/>
+    <!--<input type="status" placeholder="Status" [(ngModel)]="newCoupon.status"/>-->
+    <select [(ngModel)]="newCoupon.status" placeholder="Status">
+      <option value="AVAILABLE">AVAILABLE</option>
+      <option value="BLOCKED">BLOCKED</option>
+   </select> 
     <input type="text" placeholder="discount price" [(ngModel)]="newCoupon.discountPrice"/>
-    <button (click)="addDiscountCoupon()">Add Coupon</button>
+    <button class="btn btn-primary" (click)="addDiscountCoupon()">Add Coupon</button>
 
-    <table *ngIf="discountCoupons.length>0">
+    <table class="tbl1"  *ngIf="discountCoupons.length>0">
         <tr>
            <th>S.no</th>
            <th>Coupon code</th>
@@ -18,8 +25,9 @@
            <td>{{coupon.expiryDate}}</td>
            <td>{{coupon.status}}</td>
            <td>{{coupon.discountPrice}}</td>
-           <td ><button (click)="modifyCoupon(coupon)">Modify</button></td>
-           <td ><button (click)="deleteCoupon(coupon.couponCode)">Delete</button></td>
+           <td ><button button class="btn-secondary" (click)="modifyCoupon(coupon)">Modify</button></td>
+           <td ><button button class="btn-remove" (click)="deleteCoupon(coupon.couponCode)">Delete</button></td>
            
         </tr>
      </table>
+   </div>

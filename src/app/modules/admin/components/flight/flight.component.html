@@ -1,0 +1,23 @@
+<div class="main-div">
+  <h3>Modify Flight</h3>
+      <form  [formGroup]="manageFlightsService.flightForm" (submit)="modifyFlight()">
+        
+          
+          <input type="text" formControlName="flightId"/>
+          <input type="text" formControlName="airlineId"/>
+      
+          
+          <input type="text" formControlName="flightName" placeholder="Flghtname"/>     
+          <input type="text" formControlName="from" placeholder="Flght from"/>  
+          <input type="text" formControlName="to" placeholder="Flght to"/>  
+          <input type="text" formControlName="dateTime" placeholder="Time"/>  
+          <input type="date" formControlName="date" placeholder="Time"/>  
+          <input type="number" formControlName="price" placeholder="discount price"/>
+          <input type="number" formControlName="seats" placeholder="discount price"/>
+          <button class="btn btn-secondary" (click)="goBack()">Back</button>
+      
+          
+        <input class="btn btn-primary" type="submit" >
+      
+    </form>
+  </div>

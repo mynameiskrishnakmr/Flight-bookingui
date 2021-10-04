@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { jsPDF } from 'jspdf';
 import { Passenger } from 'src/app/models/passenger.mode';
 import { BookService } from 'src/app/service/book.service';
 import { FlightService } from 'src/app/service/flight.service';
+
+import autoTable from 'jspdf-autotable'
+
 
 @Component({
   selector: 'app-book-ticket',
@@ -10,6 +14,7 @@ import { FlightService } from 'src/app/service/flight.service';
   styleUrls: ['./book-ticket.component.css']
 })
 export class BookTicketComponent implements OnInit {
+  isSubmitted: boolean=false;
   ngOnInit(): void {
    
   }
@@ -23,6 +28,8 @@ export class BookTicketComponent implements OnInit {
   public ticketPassengers :any[]=[];
   public userId:string="";
   public couponReponse:any;
+  public message:string="";
+  public discountAmount:number=0;
   
 
   constructor(private flightService: FlightService,private fb:FormBuilder, private bookService:BookService){
@@ -60,27 +67,41 @@ export class BookTicketComponent implements OnInit {
 
   applyCoupon(){
     console.log("inside apply coupon");
-    this.userId=this.bookingForm.value.userId;
-    let noOfPassengers = this.passengers.length
-    this.bookService.applycoupon(this.flightService.getflightId(),this.userId,  noOfPassengers, this.couponCode, ).subscribe((response:any)=>{
-      console.log(response);
-      this.couponReponse=response;
-    });
+    this.isSubmitted=true;
+    if(this.bookingForm.valid){
+        this.userId=this.bookingForm.value.userId;
+        let noOfPassengers = this.passengers.length
+        console.log("coupon code hh"+ this.bookingForm.value.couponcode);
+        this.bookService.applycoupon(this.flightService.getflightId(),this.userId,  noOfPassengers, this.bookingForm.value.couponcode ).subscribe((response:any)=>{
+          console.log(response);
+          this.couponReponse=response;
+          this.message=response.couponStatus;
+          this.discountAmount=response.discount;
+        });
+      }
 
   }
 
   bookticket(){
     this.userId=this.bookingForm.value.userId;
-    this.bookService.bookticket(this.flightService.getflightId(), this.passengers, this.couponCode, this.userId).subscribe((response:any)=>{
+    this.bookService.bookticket(this.flightService.getflightId(), this.passengers, this.bookingForm.value.couponcode, this.userId).subscribe((response:any)=>{
       console.log(response);
       this.ticket=response;
      this.ticketPassengers= this.ticket.passengers;
     });
   }
 
-  
+  downloadPDF() 
+  {
+    
+    let data = document.getElementById('ticket1')!; 
+    console.log(data);
 
-  
-
+    const doc = new jsPDF()
+    //var res = autoTableHtmlToJson('ticket1');
+    //autoTable(res.columns, res.data);
+    autoTable(doc, { html: 'ticket1' });
+    doc.save('table.pdf')
+  }
 
 }

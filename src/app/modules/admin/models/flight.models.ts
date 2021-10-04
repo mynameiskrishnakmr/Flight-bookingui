@@ -4,6 +4,7 @@ export class Flight {
 
     constructor(public flightId:string
         ,public flightName:string
+        ,public airlineId:string
         ,public from: string
         , public to:string
         , public dateTime:string

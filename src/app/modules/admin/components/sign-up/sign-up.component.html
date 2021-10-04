@@ -20,12 +20,12 @@
       </div>
 
         
-      <p [ngClass]="{ 'has-error': isSubmitted && formControls.username.errors }">
-        <input type="email" formControlName="username" placeholder="Email-id">
+      <p [ngClass]="{ 'has-error': isSubmitted && formControls.userId.errors }">
+        <input type="email" formControlName="userId" placeholder="Email-id">
       </p>
   
-      <div *ngIf="isSubmitted && formControls.username.errors" class="help-block">
-        <div *ngIf="formControls.username.errors">username is required</div>
+      <div *ngIf="isSubmitted && formControls.userId.errors" class="help-block">
+        <div *ngIf="formControls.userId.errors">userId is required</div>
       </div>
   
       <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">

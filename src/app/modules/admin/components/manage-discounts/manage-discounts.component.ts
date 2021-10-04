@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+//import { MatDialog} from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { Route, Router } from '@angular/router';
 import { Couponcode } from '../../models/couponcode.model';
 import { ManageDiscountsService } from '../../services/manage-discounts.service';
+import { DiscountComponent } from '../discount/discount.component';
+
 
 @Component({
   selector: 'app-manage-discounts',
@@ -19,7 +24,7 @@ export class ManageDiscountsComponent implements OnInit {
    newCoupon :Couponcode= new Couponcode("",new Date,"","");
   message: any;
 
-  constructor(private manageDiscountsService: ManageDiscountsService) { 
+  constructor(private manageDiscountsService: ManageDiscountsService, private matDialogue: MatDialog,private router:Router) { 
 
 
   }
@@ -40,16 +45,25 @@ export class ManageDiscountsComponent implements OnInit {
 
   }
 
-  modifyCoupon(coupon:Couponcode){
+  /*modifyCoupon(coupon:Couponcode){
+        this.manageDiscountsService.populateForm(coupon);
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = "60%";
+        this.matDialogue.open(DiscountComponent,dialogConfig);
+        
+        //this.matDialogue.afterAllClosed.subscribe((response:any)=>console.log("krishna"+response) );
+        this.matDialogue.afterAllClosed.subscribe((response:any)=>console.log("krishna"+response) );
 
-    this.manageDiscountsService.modifyDiscountcoupon(coupon).subscribe((response:any)=>{
-      console.log(response);
-      this.coupon = response;
-      this.getAllCoupon();
-    });
+        // this.matDialogue.open(ManageDiscountsComponent);
+  }*/
+
+  modifyCoupon(coupon:Couponcode){
+    this.manageDiscountsService.populateForm(coupon);
+    this.router.navigate(["/admin/discount-modify"]);
     
   }
-
 
   deleteCoupon(couponCode:string){
 
@@ -59,6 +73,7 @@ export class ManageDiscountsComponent implements OnInit {
       this.getAllCoupon();
     });
   }
+
 
   getAllCoupon(){
       this.manageDiscountsService.getAllDiscountCoupons().subscribe((response:any)=>{

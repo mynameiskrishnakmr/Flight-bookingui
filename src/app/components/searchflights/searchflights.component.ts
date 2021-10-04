@@ -13,7 +13,7 @@ export class SearchflightsComponent implements OnInit {
   public flightFrom:string ="";
   public flightTo:string ="";
   public dateOfJourney:Date =new Date;  
-  public url:string ="http://localhost:9091/api/v1.0/flights/search?";
+  public url:string ="http://3.143.221.2:9091/api/v1.0/flights/search?";
   public minDate =  new Date();
   public flights :any[]=[];
   

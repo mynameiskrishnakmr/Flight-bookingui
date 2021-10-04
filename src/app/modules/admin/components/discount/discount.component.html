@@ -1,0 +1,26 @@
+<div class="main-div">
+    <h3>Modify Discount</h3>
+      <form  [formGroup]="manageService.discountForm" (submit)="modifyDiscountCoupon()">
+
+        
+          <input type="text"  formControlName="couponCode" placeholder="Discount coupon code" />
+    
+    
+          <input type="date" formControlName="expiryDate" placeholder="Expiry date"/>
+
+          <select formControlName = "status" placeholder="Status">
+              <option value="AVAILABLE">AVAILABLE</option>
+              <option value="BLOCKED">BLOCKED</option>
+          </select> 
+
+
+
+            <input  type="number" formControlName="discountPrice" placeholder="discount price"/>
+            <button button class="btn-secondary" (click)=goBack()>Back</button>
+      
+      
+    <input  class="btn-primary"type="submit" >
+
+</form>
+</div>
+

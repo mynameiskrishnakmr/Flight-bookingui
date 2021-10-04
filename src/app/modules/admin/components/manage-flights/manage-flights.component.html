@@ -1,16 +1,18 @@
 
-    <input type="text" placeholder="Flight name" [(ngModel)]="flight.flightName"/>
+<div class="main-div">
+   <h3>Manage Flights</h3>
+   <input type="text" placeholder="Flight name" [(ngModel)]="flight.flightName"/>
 
     <input type="text" placeholder="Airline Id" [(ngModel)]="airlineId"/>
     <input type="text" placeholder="Source" [(ngModel)] ="flight.from"/>
     <input type="text" placeholder="Destination" [(ngModel)]="flight.to"/>
     <input type="date" placeholder="Date" [(ngModel)]="flight.date"/>
-    <input type="string" placeholder="Time" [(ngModel)]="flight.dateTime"/>
+    <input type="text" placeholder="Time" [(ngModel)]="flight.dateTime"/>
     <input type="number" placeholder="Ticket price" [(ngModel)]="flight.price"/>
     <input type="number" placeholder="No of seats" [(ngModel)]="flight.seats"/>
-    <button (click)="addFlight()"> Add flight</button>
+    <button class="btn btn-primary" (click)="addFlight()"> Add flight</button>
 
-    <table *ngIf="flights.length>0">
+    <table class="tbl1"*ngIf="flights.length>0">
         <tr>
            <th>S.no</th>
            <th>Flight Id</th>
@@ -34,9 +36,9 @@
            <td>{{flight.date}}</td>
            <td>{{flight.price}}</td>
            <td>{{flight.seats}}</td>
-           <td ><button (click)="modifyFlight(flight,flight.airline.airlineId)">Modify</button></td>
-           <td ><button (click)="deleteFlight(flight.airline.airlineId, flight.flightId)">Delete</button></td>
+           <td ><button class="btn-secondary" (click)="modifyFlight(flight,flight.airline.airlineId)">Modify</button></td>
+           <td ><button class="btn-remove"  (click)="deleteFlight(flight.airline.airlineId, flight.flightId)">Delete</button></td>
         </tr>
      </table>
     
-    
+</div>   

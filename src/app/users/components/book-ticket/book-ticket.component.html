@@ -43,12 +43,7 @@
     </table>
 
     <form [formGroup]="bookingForm">
-       <h4>Enter a coupon code </h4>
-       <input type = "text"  formControlName = "couponcode" >
-       <button  class="btn btn-primary" (click)="applyCoupon()"> Apply Coupon </button>
-       <!--<div class="alert alert-success">
-        <strong>Success!</strong> This alert box could indicate a successful or positive action.
-      </div>-->
+       
 
        <h4>Email-id </h4>
        <input type = "text" formControlName = "userId" required>
@@ -61,6 +56,21 @@
             </span>
             
       </div>
+      <h4>Enter a coupon code </h4>
+       <input type = "text"  formControlName = "couponcode" >
+       <button  class="btn btn-primary" (click)="applyCoupon()"> Apply Coupon </button>
+       <div  *ngIf="message!=''" class="alert alert-success">
+        <strong>Success!</strong> {{message}}
+        <strong> Discount amount: </strong> {{discountAmount}}
+      </div>
+      <div *ngIf="(!bookingForm.valid) && (isSubmitted)">
+        <span *ngIf="bookingForm.controls['userId'].hasError('required')">
+
+         Please Enter email id
+
+        </span>
+        
+  </div>
 
        <br><br>
 
@@ -68,8 +78,8 @@
        <button type ="submit" class="btn btn-primary" (click)="bookticket()"> Book ticket </button>
     </form>
  
-<div class="ticket-det" *ngIf="ticket">
- <table >
+<div class="ticket-det" *ngIf="ticket" >
+ <table id ="ticket1" >
     <caption>Ticket</caption>
     <tbody>
         <tr>
@@ -116,6 +126,9 @@
           <td>{{passenger.gender}}</td>
         </tr>
     </tbody>
+    
 </table>
+<button (click)="downloadPDF()">download</button>
+
 </div>
 </div>

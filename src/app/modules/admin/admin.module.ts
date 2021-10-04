@@ -16,6 +16,10 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './admin.routing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DiscountComponent } from './components/discount/discount.component';
+import { FlightComponent } from './components/flight/flight.component';
 
 
 
@@ -29,11 +33,13 @@ import { routes } from './admin.routing';
     ManageDiscountsComponent,
     AdminPageComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    DiscountComponent,
+    FlightComponent
     
   ],
   imports:  [
-    CommonModule,  FormsModule,ReactiveFormsModule,AppRoutingModule, HttpClientModule,RouterModule.forChild(routes)
+    CommonModule,  FormsModule,ReactiveFormsModule,AppRoutingModule, HttpClientModule,RouterModule.forChild(routes), MatDialogModule,BrowserAnimationsModule
   ],
 
   providers: [AuthGuard, AuthenticationService,{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },

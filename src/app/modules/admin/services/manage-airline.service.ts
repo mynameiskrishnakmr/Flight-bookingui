@@ -7,7 +7,7 @@ import { Airline } from '../models/airline.model';
 })
 export class ManageAirlineService {
   
-  url="http://localhost:9091/api/v1.0/admin/airline";
+  url="http://3.143.221.2:9091/api/v1.0/admin/airline";
   
 
   constructor(private http:HttpClient) { }

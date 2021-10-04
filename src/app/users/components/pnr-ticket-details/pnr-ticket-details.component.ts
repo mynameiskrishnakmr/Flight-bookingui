@@ -13,6 +13,7 @@ export class PnrTicketDetailsComponent implements OnInit {
   today=new Date();
   userId:string="";
   error: boolean=false;
+  message:string="";
   
 
   constructor(private ticketService : TicketService) { 
@@ -39,6 +40,7 @@ export class PnrTicketDetailsComponent implements OnInit {
         this.ticketService.cancelTicket(this.ticketDetails.pnr, this.userId).subscribe((response:any) =>{
 
          console.log("fina delete respon"+response);
+         this.message=response.message;
 
        });
        

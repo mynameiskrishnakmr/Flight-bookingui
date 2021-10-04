@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Flight } from '../../models/flight.models';
 import { ManageFlightsService } from '../../services/manage-flights.service';
 
@@ -11,11 +12,11 @@ export class ManageFlightsComponent implements OnInit {
 
 
   flights :any[]=[];
-  flight :Flight= new Flight("","","","","",new Date,"","")
+  flight :Flight= new Flight("","","","","","",new Date,"","")
   airlineId:string="";
   message:string ="";
 
-  constructor(private manageFlightsService: ManageFlightsService) { }
+  constructor(private manageFlightsService: ManageFlightsService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -44,13 +45,19 @@ export class ManageFlightsComponent implements OnInit {
   }
 
 
-  modifyFlight(flight:Flight, airlineId:string){
+  /*modifyFlight(flight:Flight, airlineId:string){
 
     this.manageFlightsService.modifyFlight(flight,airlineId,flight.flightId).subscribe((response:any) =>{
       console.log("Modified flight"+response);
       
       this.getAllFlights();
     })
+  }*/
+
+  modifyFlight(flight:any, airlineId:any){
+    this.manageFlightsService.populateForm(flight,airlineId);
+    this.router.navigate(["/admin/flight-modify"]);
+
   }
 
   deleteFlight(airlineId:string,flightId:string){

@@ -55,6 +55,10 @@
         <input type = "text" [(ngModel)]="userId" required>
         <button class="btn-remove-show " (click) = "cancelTicket()" >cancel</button>
         <div *ngIf="error" class="error">Enter a valid email id</div>
+        <div  *ngIf="message!=''" class="alert alert-success">
+            <strong> {{message}}</strong>
+            
+          </div>
     </div>
 </div>
 

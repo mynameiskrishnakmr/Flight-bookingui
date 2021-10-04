@@ -1,4 +1,6 @@
 import { Routes } from "@angular/router";
+import { DiscountComponent } from "./components/discount/discount.component";
+import { FlightComponent } from "./components/flight/flight.component";
 import { LoginComponent } from "./components/login/login.component";
 
 import { ManageAirlinesComponent } from "./components/manage-airlines/manage-airlines.component";
@@ -14,6 +16,9 @@ export const routes:Routes =[
               
               {path: "manage-airlines", component: ManageAirlinesComponent, canActivate:[AuthGuard]}, 
               {path: "manage-flights", component: ManageFlightsComponent,  canActivate:[AuthGuard]},
-              {path: "manage-discounts", component:ManageDiscountsComponent,  canActivate:[AuthGuard] }
+              {path: "manage-discounts", component:ManageDiscountsComponent,  canActivate:[AuthGuard] },
+              {path: "discount-modify", component:DiscountComponent,  canActivate:[AuthGuard] },
+              {path: "flight-modify", component:FlightComponent,  canActivate:[AuthGuard] }
+              
 
 ]

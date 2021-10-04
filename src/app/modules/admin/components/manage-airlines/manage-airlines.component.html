@@ -1,24 +1,25 @@
+<div class="main-div">
+   <h3>Manage Airlines</h3>
+   <input type="text" placeholder="AirlineName" [(ngModel)]="airlineName"/>
+   <input type="text" placeholder="emailId" [(ngModel)]="airlineEmail"/>
+   <Button class="btn btn-primary" (click)="addAirline()">Add</Button>
 
-<input type="text" placeholder="AirlineName" [(ngModel)]="airlineName"/>
-<input type="text" placeholder="emailId" [(ngModel)]="airlineEmail"/>
-<Button (click)="addAirline()">Add</Button>
-
-<table *ngIf="airlines.length>0">
-    <tr>
-       <th>S.no</th>
-       <th>Airline id</th>
-       <th>Airline name</th>
-       <th>Airline email id</th>
-    </tr>
-    <tr *ngFor="let airline of airlines; let i = index">
-       <td>{{i+1}}</td>
-       <td>{{airline.airlineId}}</td>
-       <td>{{airline.airlineName}}</td>
-       <td>{{airline.airlineEmail}}</td>
-       <td *ngIf="airline.status=='BLOCKED'"><button (click)="blockAirline(airline.airlineId)">UnBlock</button></td>
-       <td *ngIf="airline.status =='AVAILABLE'"><button (click)="blockAirline(airline.airlineId)">Block</button></td>
-    </tr>
- </table>
-
-
+      <table class="tbl1"  *ngIf="airlines.length>0">
+          <tr>
+             <th>S.no</th>
+             <th>Airline id</th>
+             <th>Airline name</th>
+             <th>Airline email id</th>
+          </tr>
+          <tr *ngFor="let airline of airlines; let i = index">
+             <td>{{i+1}}</td>
+             <td>{{airline.airlineId}}</td>
+             <td>{{airline.airlineName}}</td>
+             <td>{{airline.airlineEmail}}</td>
+             <td  *ngIf="airline.status=='BLOCKED'"><button class="btn btn-secondary" (click)="blockAirline(airline.airlineId)">UnBlock</button></td>
+             <td  *ngIf="airline.status =='AVAILABLE'"><button class="btn-remove"  (click)="blockAirline(airline.airlineId)">Block</button></td>
+          </tr>
+       </table>
+    
+</div>
 

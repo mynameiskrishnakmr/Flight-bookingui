@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    url:string="http://localhost:9091/authenticate/authenticate";
+    url:string="http://3.143.221.2:9091/authenticate/authenticate";
     stringJson: string="";
     constructor(private http: HttpClient, private router:Router) {}
 

@@ -8,7 +8,7 @@ import { Passenger } from '../models/passenger.mode';
 export class BookService {
 
   //userId : string ="111"; //temp value, to be fetched from local storage
-  url : string= "http://localhost:9091/api/v1.0/booking/users";
+  url : string= "http://3.143.221.2:9091/api/v1.0/booking/users";
   stringJson: string="";
   constructor( private http:HttpClient) { }
 

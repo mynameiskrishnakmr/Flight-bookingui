@@ -31,19 +31,20 @@ export class LoginComponent implements OnInit {
     }
 
   getLogin(){
-
-    console.log(this.loginForm);
     this.isSubmitted = true;
-    this.user = this.loginForm.value;
-    
-    this.authService.getLogin(this.user).subscribe((response:any)=>{
-        console.log(response);
-        localStorage.setItem('token',response.token);
-        this.router.navigate(["/admin/manage-airlines"]);
-        this.authService.isLoggedIn=true;
-        
-    });
-    
+    if(this.loginForm.valid){
+      console.log(this.loginForm);
+      
+      this.user = this.loginForm.value;
+      
+      this.authService.getLogin(this.user).subscribe((response:any)=>{
+          console.log(response);
+          localStorage.setItem('token',response.token);
+          this.router.navigate(["/admin/manage-airlines"]);
+          this.authService.isLoggedIn=true;
+
+      });
+    }
    
 
   }
